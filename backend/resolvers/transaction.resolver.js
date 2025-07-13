@@ -1,6 +1,6 @@
 import Transaction from "../model/transaction.model.js";
 import User from "../model/user.model.js";
-
+// Transaction
 const transactionResolver = {
   Query: {
     transactions: async (_, __, context) => {
