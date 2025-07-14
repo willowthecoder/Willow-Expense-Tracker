@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.13.8",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "4.expense-tracker-using-graphql": "file:..",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.5.0",
     "clsx": "^2.1.1",
