@@ -18,9 +18,10 @@ import { connectDB } from "./db/connectDB.js";
 // Schema
 import mergeResolver from "./resolvers/index.js";
 import mergetypeDef from "./typeDefs/index.js";
-configurePassport();
-
 dotenv.config();
+
+await configurePassport();
+
 const __dirname = path.resolve();
 const app = express();
 const httpServer = http.createServer(app);
@@ -36,11 +37,13 @@ store.on("error", (err) => console.log(err));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false, // this option specifies whether to save the session to the store on every request
-    saveUninitialized: false, // option specifies whether to save uninitialized sessions
+    resave: false,
+    saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true, // this option prevents the Cross-Site Scripting (XSS) attacks
+      httpOnly: true,
+      sameSite: "none", // ✅ INSIDE cookie
+      secure: true, // ✅ INSIDE cookie
     },
     store: store,
   })
@@ -60,9 +63,10 @@ await server.start();
 app.use(
   "/graphql",
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://willow-expense-tracker.onrender.com", // ✅ use exact deployed URL
     credentials: true,
   }),
+
   express.json(),
   // expressMiddleware accepts the same arguments:
   // an Apollo Server instance and optional configuration options
