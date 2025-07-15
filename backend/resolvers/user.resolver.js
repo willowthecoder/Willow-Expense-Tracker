@@ -37,8 +37,8 @@ const userResolver = {
         }
         const salt = await bcrypt.genSalt(20);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+        const boyProfilePic = `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}&top=shortHair&accessories=glasses&clothing=shirtCrewNeck`;
+        const girlProfilePic = `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}&top=longHair&accessories=earrings&clothing=blouse`;
         const newUser = new User({
           username,
           name,

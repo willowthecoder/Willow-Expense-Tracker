@@ -5,6 +5,6 @@ export function formatDate(timestamp) {
 }
 
 // Example usage:
-const timestamp = 1704067200000;
-const formattedDate = formatDate(timestamp);
-console.log(formattedDate); // Output: "12 Dec 2023"
+// const timestamp = 1704067200000;
+// const formattedDate = formatDate(timestamp);
+// console.log(formattedDate); // Output: "12 Dec 2023"

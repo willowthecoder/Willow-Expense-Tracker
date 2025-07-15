@@ -7,9 +7,9 @@ import TransactionForm from "../components/TransactionForm.jsx";
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 import { useMutation, useQuery } from "@apollo/client";
-import { LOGOUT } from "../graphql/mutations/user.mutation";
+import { LOGOUT } from "../graphql/mutations/user.mutation.js";
 import { GET_TRANSACTION_STATISTICS } from "../graphql/queries/transaction.query.js";
-import { GET_AUTHENTICATED_USER } from "../graphql/queries/user.query";
+import { GET_AUTHENTICATED_USER } from "../graphql/queries/user.query.js";
 import { useEffect, useState } from "react";
 
 const chartData = {
@@ -99,6 +99,16 @@ const HomePage = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (authUserData) {
+      console.log("Authenticated User Data:", authUserData);
+      console.log(
+        "Profile Picture URL:",
+        authUserData.authUser?.profilePicture
+      );
+    }
+  }, [authUserData]);
+
   const handleLogout = async () => {
     try {
       await logout();
@@ -118,6 +128,7 @@ const HomePage = () => {
           <p className="md:text-4xl text-2xl lg:text-4xl font-bold text-center relative z-50 mb-4 mr-4 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 inline-block text-transparent bg-clip-text">
             Spend wisely, track wisely
           </p>
+
           <img
             src={authUserData?.authUser.profilePicture}
             className="w-11 h-11 rounded-full border cursor-pointer"

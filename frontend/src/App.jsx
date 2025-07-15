@@ -12,10 +12,10 @@ import { Toaster } from "react-hot-toast";
 function App() {
   const { loading, data } = useQuery(GET_AUTHENTICATED_USER);
 
-  if (loading) return null;
+  if (loading) return <div>Loading user...</div>;
 
   return (
-    <>
+    <div>
       {data?.authUser && <Header />}
       <Routes>
         <Route
@@ -39,7 +39,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toaster />
-    </>
+    </div>
   );
 }
 
