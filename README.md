@@ -1,5 +1,6 @@
 
 ```markdown
+Learned from a Tutorial 
 # 💸 GraphQL Expense Tracker
 
 A full-stack Expense Tracker built using **GraphQL**, **Apollo Server**, **Express**, and a **Vite + React** frontend. This project is a learning-driven build — created to understand GraphQL APIs, schema design, and seamless frontend/backend integration.
